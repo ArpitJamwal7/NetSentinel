@@ -1,0 +1,32 @@
+[
+    {
+        "ip_address": "172.16.24.5",
+        "mac_address": "A1:B2:C3:D4:E5:F6",
+        "vendor": "Cisco Systems",
+        "status": "Live",
+        "os_version": "Linux 4.15",
+        "open_ports": [
+            {
+                "port": 22,
+                "service_details": "ssh OpenSSH 7.2p2"
+            },
+            {
+                "port": 80,
+                "service_details": "http Apache httpd 2.4.18"
+            }
+        ]
+    },
+    {
+        "ip_address": "172.16.24.10",
+        "mac_address": "11:22:33:44:55:66",
+        "vendor": "Apple Inc.",
+        "status": "Live",
+        "os_version": "macOS 11.2",
+        "open_ports": [
+            {
+                "port": 443,
+                "service_details": "https nginx 1.18.0"
+            }
+        ]
+    }
+]
