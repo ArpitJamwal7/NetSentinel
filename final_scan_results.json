@@ -1,0 +1,1098 @@
+[
+    {
+        "ip_address": "172.16.24.1",
+        "mac_address": "94:24:E1:E9:85:91",
+        "vendor": "Alcatel-Lucent Enterprise",
+        "status": "Live",
+        "open_ports": [
+            {
+                "port": 21,
+                "service": "ftp"
+            },
+            {
+                "port": 22,
+                "service": "ssh"
+            },
+            {
+                "port": 23,
+                "service": "telnet"
+            },
+            {
+                "port": 443,
+                "service": "https"
+            }
+        ]
+    },
+    {
+        "ip_address": "172.16.24.108",
+        "mac_address": "D6:34:D8:FD:97:50",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.113",
+        "mac_address": "F2:D7:36:E9:14:D3",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.129",
+        "mac_address": "7E:5C:D8:2B:F7:EE",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.130",
+        "mac_address": "EA:84:D3:EB:6F:56",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.139",
+        "mac_address": "FC:AA:B6:A1:04:48",
+        "vendor": "Samsung Electronics",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.140",
+        "mac_address": "B8:94:E7:2B:DA:ED",
+        "vendor": "Xiaomi Communications",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.144",
+        "mac_address": "92:D2:AA:14:CE:50",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.145",
+        "mac_address": "8E:FB:27:F3:5C:0B",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.15",
+        "mac_address": "26:A3:B0:B9:75:CC",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.154",
+        "mac_address": "2E:8C:2A:83:51:58",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.156",
+        "mac_address": "30:7B:C9:6B:37:B4",
+        "vendor": "Shenzhen Bilian Electronic\u00ef\u00bc\u008cLTD",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.16",
+        "mac_address": "3E:DC:E6:66:12:90",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.161",
+        "mac_address": "1A:6D:F2:67:0E:B2",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.166",
+        "mac_address": "CE:EF:F9:43:52:77",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.167",
+        "mac_address": "BE:B8:C2:F2:5A:CB",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.170",
+        "mac_address": "EE:53:73:83:18:52",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.187",
+        "mac_address": "42:C5:3C:D3:1B:CF",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.188",
+        "mac_address": "00:72:EE:AA:1F:45",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.191",
+        "mac_address": "DC:21:48:37:FF:B9",
+        "vendor": "Intel Corporate",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.199",
+        "mac_address": "9E:9D:61:97:DA:D5",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.201",
+        "mac_address": "3C:CD:40:BB:10:2B",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.204",
+        "mac_address": "3A:48:8A:98:0B:E5",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.205",
+        "mac_address": "B6:6A:FC:36:69:D3",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.207",
+        "mac_address": "A2:DF:5C:DF:64:2C",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.208",
+        "mac_address": "64:4E:D7:5E:13:EF",
+        "vendor": "HP",
+        "status": "Live",
+        "open_ports": [
+            {
+                "port": 80,
+                "service": "http"
+            },
+            {
+                "port": 443,
+                "service": "https"
+            },
+            {
+                "port": 8080,
+                "service": "http-proxy"
+            }
+        ]
+    },
+    {
+        "ip_address": "172.16.24.209",
+        "mac_address": "76:84:9A:A0:F5:67",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.214",
+        "mac_address": "E0:2E:0B:08:8A:27",
+        "vendor": "Intel Corporate",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.217",
+        "mac_address": "5C:FB:3A:57:F4:D5",
+        "vendor": "Chongqing Fugui Electronics",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.22",
+        "mac_address": "10:7D:C8:0D:14:AA",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.231",
+        "mac_address": "E0:1F:88:27:A9:8F",
+        "vendor": "Xiaomi Communications",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.232",
+        "mac_address": "E0:2E:0B:08:8A:2C",
+        "vendor": "Intel Corporate",
+        "status": "Live",
+        "open_ports": [
+            {
+                "port": 80,
+                "service": "http"
+            }
+        ]
+    },
+    {
+        "ip_address": "172.16.24.236",
+        "mac_address": "BA:5E:84:6F:6C:31",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.24",
+        "mac_address": "72:65:A4:3F:0A:46",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.245",
+        "mac_address": "4C:97:CC:D6:BD:32",
+        "vendor": "Apple",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.25",
+        "mac_address": "4E:FE:D2:A1:FD:71",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.251",
+        "mac_address": "92:37:31:09:63:58",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.255",
+        "mac_address": "E6:55:6B:4F:9E:B8",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.33",
+        "mac_address": "0A:3E:4B:50:54:EC",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.38",
+        "mac_address": "02:B9:DD:58:9E:68",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.40",
+        "mac_address": "F6:27:02:8C:59:8A",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.41",
+        "mac_address": "88:6B:DB:DF:15:D6",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.42",
+        "mac_address": "30:7B:C9:6B:4E:97",
+        "vendor": "Shenzhen Bilian Electronic\u00ef\u00bc\u008cLTD",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.45",
+        "mac_address": "F2:02:50:78:F7:AA",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.47",
+        "mac_address": "8E:85:5E:1B:CD:DE",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.49",
+        "mac_address": "FA:EC:0D:87:2F:27",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.51",
+        "mac_address": "4E:05:17:5B:BC:00",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.54",
+        "mac_address": "52:E7:76:09:51:BC",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.61",
+        "mac_address": "1A:49:B1:1B:03:6A",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.62",
+        "mac_address": "74:F2:FA:5B:79:F6",
+        "vendor": "Xiaomi Communications",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.66",
+        "mac_address": "B6:1F:79:28:27:51",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.67",
+        "mac_address": "4C:49:E3:65:03:C7",
+        "vendor": "Xiaomi Communications",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.68",
+        "mac_address": "E6:7D:FB:F2:30:2F",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.80",
+        "mac_address": "AA:02:95:67:7D:AC",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.89",
+        "mac_address": "C6:FA:BA:24:9E:B9",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.91",
+        "mac_address": "4E:8C:B4:42:08:5B",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.24.98",
+        "mac_address": "30:7B:C9:6B:37:D6",
+        "vendor": "Shenzhen Bilian Electronic\u00ef\u00bc\u008cLTD",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.25.100",
+        "mac_address": "5E:B1:38:FA:D3:49",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.25.101",
+        "mac_address": "5A:D2:14:CE:7C:3D",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.25.102",
+        "mac_address": "D8:32:E3:7D:7E:8B",
+        "vendor": "Xiaomi Communications",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.25.103",
+        "mac_address": "16:F7:63:4C:D6:8C",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.25.105",
+        "mac_address": "44:F7:9F:14:AC:A3",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.25.113",
+        "mac_address": "3A:8C:06:4D:4B:44",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.25.115",
+        "mac_address": "B6:2F:00:26:95:2E",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.25.121",
+        "mac_address": "FE:87:99:8B:64:9F",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.25.127",
+        "mac_address": "32:D7:4E:FA:8A:DB",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.25.136",
+        "mac_address": "02:C6:F1:7B:2E:D2",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.25.139",
+        "mac_address": "54:14:F3:FF:2D:69",
+        "vendor": "Intel Corporate",
+        "status": "Live",
+        "open_ports": [
+            {
+                "port": 445,
+                "service": "microsoft-ds"
+            }
+        ]
+    },
+    {
+        "ip_address": "172.16.25.147",
+        "mac_address": "50:C2:E8:1B:0F:E7",
+        "vendor": "Cloud Network Technology Singapore PTE.",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.25.148",
+        "mac_address": "64:4E:D7:5E:C2:08",
+        "vendor": "HP",
+        "status": "Live",
+        "open_ports": [
+            {
+                "port": 80,
+                "service": "http"
+            },
+            {
+                "port": 443,
+                "service": "https"
+            },
+            {
+                "port": 8080,
+                "service": "http-proxy"
+            }
+        ]
+    },
+    {
+        "ip_address": "172.16.25.149",
+        "mac_address": "8E:FA:FD:6E:8E:02",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.25.151",
+        "mac_address": "A4:97:B1:CD:6D:77",
+        "vendor": "Chongqing Fugui Electronics",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.25.153",
+        "mac_address": "66:6C:39:1F:5C:14",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.25.168",
+        "mac_address": "3A:3B:12:18:49:E1",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.25.171",
+        "mac_address": "30:7B:C9:6B:37:C0",
+        "vendor": "Shenzhen Bilian Electronic\u00ef\u00bc\u008cLTD",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.25.172",
+        "mac_address": "14:D4:24:A7:BB:AE",
+        "vendor": "AzureWave Technology",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.25.175",
+        "mac_address": "E0:8F:4C:30:C1:C2",
+        "vendor": "Intel Corporate",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.25.178",
+        "mac_address": "D8:3B:BF:47:81:37",
+        "vendor": "Intel Corporate",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.25.182",
+        "mac_address": "46:F3:7E:50:90:1E",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.25.183",
+        "mac_address": "28:D0:43:E9:27:8E",
+        "vendor": "AzureWave Technology",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.25.192",
+        "mac_address": "86:0E:13:2A:CC:15",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.25.195",
+        "mac_address": "D6:D9:0B:E3:6B:8A",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.25.221",
+        "mac_address": "22:EE:99:EA:91:05",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.25.228",
+        "mac_address": "0E:98:DB:3D:2E:47",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.25.238",
+        "mac_address": "E0:2E:0B:09:1A:14",
+        "vendor": "Intel Corporate",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.25.242",
+        "mac_address": "C6:BE:5D:FC:3C:A5",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.25.251",
+        "mac_address": "C0:47:54:69:7A:37",
+        "vendor": "vivo Mobile Communication",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.25.252",
+        "mac_address": "80:E4:BA:89:92:25",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.25.254",
+        "mac_address": "32:C2:E4:BD:B6:18",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.25.26",
+        "mac_address": "60:FF:9E:84:02:32",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.25.4",
+        "mac_address": "76:BB:21:AC:39:28",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.25.46",
+        "mac_address": "F8:5E:0B:CB:01:B0",
+        "vendor": "Realme Chongqing Mobile Telecommunications",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.25.5",
+        "mac_address": "14:AC:60:5C:34:CB",
+        "vendor": "Cloud Network Technology Singapore PTE.",
+        "status": "Live",
+        "open_ports": [
+            {
+                "port": 80,
+                "service": "http"
+            },
+            {
+                "port": 443,
+                "service": "https"
+            },
+            {
+                "port": 445,
+                "service": "microsoft-ds"
+            }
+        ]
+    },
+    {
+        "ip_address": "172.16.25.59",
+        "mac_address": "14:D4:24:A7:CF:0C",
+        "vendor": "AzureWave Technology",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.25.67",
+        "mac_address": "E0:2E:0B:09:1A:0A",
+        "vendor": "Intel Corporate",
+        "status": "Live",
+        "open_ports": [
+            {
+                "port": 80,
+                "service": "http"
+            },
+            {
+                "port": 445,
+                "service": "microsoft-ds"
+            }
+        ]
+    },
+    {
+        "ip_address": "172.16.25.68",
+        "mac_address": "E0:2E:0B:09:A0:8D",
+        "vendor": "Intel Corporate",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.25.70",
+        "mac_address": "82:47:D2:79:C0:9D",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.25.92",
+        "mac_address": "6A:16:93:43:AF:F2",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.26.101",
+        "mac_address": "66:D1:B8:01:95:B0",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.26.108",
+        "mac_address": "36:F2:1B:D2:EF:BA",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.26.110",
+        "mac_address": "E2:2D:02:03:5E:39",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.26.120",
+        "mac_address": "1A:3B:B8:65:12:E9",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.26.128",
+        "mac_address": "4E:45:09:C9:B4:B3",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.26.131",
+        "mac_address": "44:E5:17:0D:2B:F4",
+        "vendor": "Intel Corporate",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.26.137",
+        "mac_address": "A0:FB:C5:AB:B0:D0",
+        "vendor": "Apple",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.26.138",
+        "mac_address": "E6:BD:61:49:77:66",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.26.140",
+        "mac_address": "C8:A3:E8:29:8E:CD",
+        "vendor": "Cloud Network Technology Singapore PTE.",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.26.143",
+        "mac_address": "56:4B:AA:C2:AD:E0",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.26.149",
+        "mac_address": "76:90:89:0F:DE:5F",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.26.156",
+        "mac_address": "18:26:49:34:59:EF",
+        "vendor": "Intel Corporate",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.26.16",
+        "mac_address": "C6:4E:9A:59:5F:05",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.26.160",
+        "mac_address": "30:03:C8:94:E4:27",
+        "vendor": "Cloud Network Technology Singapore PTE.",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.26.179",
+        "mac_address": "70:66:55:FD:0F:69",
+        "vendor": "AzureWave Technology",
+        "status": "Live",
+        "open_ports": [
+            {
+                "port": 445,
+                "service": "microsoft-ds"
+            }
+        ]
+    },
+    {
+        "ip_address": "172.16.26.185",
+        "mac_address": "1E:9C:EB:BA:27:59",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.26.187",
+        "mac_address": "C0:BF:BE:93:92:9A",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": [
+            {
+                "port": 80,
+                "service": "http"
+            }
+        ]
+    },
+    {
+        "ip_address": "172.16.26.188",
+        "mac_address": "AA:DE:9B:B9:62:64",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.26.202",
+        "mac_address": "B6:91:7E:64:6C:BB",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.26.203",
+        "mac_address": "18:3F:70:08:EF:DB",
+        "vendor": "Apple",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.26.218",
+        "mac_address": "Unknown MAC",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": [
+            {
+                "port": 22,
+                "service": "ssh"
+            }
+        ]
+    },
+    {
+        "ip_address": "172.16.26.221",
+        "mac_address": "CC:47:40:E0:1A:B2",
+        "vendor": "AzureWave Technology",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.26.224",
+        "mac_address": "E0:2E:0B:93:DB:04",
+        "vendor": "Intel Corporate",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.26.233",
+        "mac_address": "96:85:F1:08:65:68",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.26.234",
+        "mac_address": "E0:2E:0B:08:B5:0B",
+        "vendor": "Intel Corporate",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.26.248",
+        "mac_address": "A2:CE:36:DE:B8:23",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.26.253",
+        "mac_address": "E0:2E:0B:09:AE:8E",
+        "vendor": "Intel Corporate",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.26.30",
+        "mac_address": "10:42:10:E5:37:6F",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.26.37",
+        "mac_address": "72:D1:6C:34:BD:12",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.26.45",
+        "mac_address": "F8:54:F6:54:BC:7F",
+        "vendor": "AzureWave Technology",
+        "status": "Live",
+        "open_ports": [
+            {
+                "port": 445,
+                "service": "microsoft-ds"
+            }
+        ]
+    },
+    {
+        "ip_address": "172.16.26.5",
+        "mac_address": "EE:B9:B8:0D:7B:73",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.26.56",
+        "mac_address": "02:A2:02:2E:74:0E",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.26.62",
+        "mac_address": "56:95:60:0E:B2:C4",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.26.66",
+        "mac_address": "02:EE:DD:41:87:BC",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.26.75",
+        "mac_address": "D2:A7:AB:59:C3:AE",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.26.87",
+        "mac_address": "FA:87:E7:5D:AE:55",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.26.88",
+        "mac_address": "44:A3:BB:E4:E4:FE",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.26.9",
+        "mac_address": "8A:57:E2:F5:6E:E2",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.26.90",
+        "mac_address": "EA:5A:CE:FF:44:3C",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.26.92",
+        "mac_address": "8E:A5:E7:E7:76:BB",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.27.1",
+        "mac_address": "B6:7D:85:C1:41:82",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.27.10",
+        "mac_address": "C6:5E:80:DC:A3:67",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.27.109",
+        "mac_address": "94:E9:79:CC:7F:DB",
+        "vendor": "Liteon Technology",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.27.17",
+        "mac_address": "D2:BE:58:5D:DB:B4",
+        "vendor": "Unknown Device",
+        "status": "Live",
+        "open_ports": []
+    },
+    {
+        "ip_address": "172.16.29.237",
+        "mac_address": "A8:6B:AD:4A:C5:83",
+        "vendor": "Hon Hai Precision Ind.",
+        "status": "Live",
+        "open_ports": []
+    }
+]
