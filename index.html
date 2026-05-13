@@ -149,7 +149,8 @@
     </div>
 
     <div id="AutoRecon" class="tab-content active">
-        <h2 style="color: #58a6ff;">> Live Network Devices</h2>
+        <h2 style="color: #58a6ff;">> Live Network Devices <span id="device-count"
+                style="color: #3fb950; font-size: 18px; margin-left: 15px;">(0 Devices Online)</span></h2>
         <div class="dashboard-grid" id="device-container"></div>
     </div>
 
@@ -181,7 +182,7 @@
 
         <div id="rogue-status"
             style="background: #238636; padding: 15px; border-radius: 5px; text-align: center; font-size: 20px; font-weight: bold; color: white; margin-bottom: 20px; transition: 0.3s;">
-            ✅ SECURE: No Evil Twin or De-Auth attacks detected.
+            ✅ SECURE: No Rogue Devices detected.
         </div>
 
         <div id="rogue-alerts-container"></div>
@@ -219,34 +220,42 @@
         db.ref('autorecon_devices').on('value', (snapshot) => {
             const data = snapshot.val();
             const container = document.getElementById('device-container');
+            const countSpan = document.getElementById('device-count');
             container.innerHTML = '';
 
             if (data) {
-                const devices = Array.isArray(data) ? data : Object.values(data);
-                devices.forEach(device => {
+                const keys = Object.keys(data).filter(key => key !== "system_offline");
+                const deviceCount = keys.length;
+
+                // Update Counter
+                countSpan.innerText = `(${deviceCount} Devices Online)`;
+                countSpan.style.color = deviceCount > 0 ? "#3fb950" : "#8b949e";
+
+                keys.forEach(key => {
+                    const device = data[key];
                     let portsHtml = '';
                     if (device.open_ports) {
                         device.open_ports.forEach(p => {
-                            let isRisk = (p.port === 22 || p.port === 21 || p.port === 23) ? 'risk-high' : '';
+                            let isRisk = (p.port === 22 || p.port === 21) ? 'risk-high' : '';
                             portsHtml += `<span class="port-tag ${isRisk}">Port ${p.port}</span>`;
                         });
                     }
                     container.innerHTML += `
-                        <div class="device-card">
-                            <h3 style="margin-top:0;">IP: ${device.ip_address}</h3>
-                            <p><strong>OS:</strong> ${device.os_version || 'Unknown'}</p>
-                            <p><strong>MAC:</strong> ${device.mac_address || 'Unknown'}</p>
-                            <div><strong>Open Ports:</strong><br>${portsHtml || 'None'}</div>
-                        </div>
-                    `;
+                <div class="device-card">
+                    <h3 style="margin-top:0;">IP: ${device.ip_address}</h3>
+                    <p><strong>OS:</strong> ${device.os_version || 'Unknown'}</p>
+                    <p><strong>MAC:</strong> ${device.mac_address || 'Unknown'}</p>
+                    <div><strong>Open Ports:</strong><br>${portsHtml || 'Scanning...'}</div>
+                </div>`;
                 });
             } else {
-                container.innerHTML = '<p style="color: #8b949e;">No devices detected.</p>';
+                countSpan.innerText = `(0 Devices Online)`;
+                container.innerHTML = '<p style="color: #8b949e;">Waiting for NetSentinel Sensor...</p>';
             }
         });
 
         // ==========================================
-        // MODULE 2: ZERO-TRUST BYOD
+        // MODULE 2: ZERO-TRUST BYOD (Leaving intact for future use)
         // ==========================================
         db.ref('byod_devices').on('value', (snapshot) => {
             const data = snapshot.val();
@@ -257,6 +266,7 @@
 
             if (data) {
                 Object.keys(data).forEach(macKey => {
+                    if (macKey === "system_offline") return;
                     const device = data[macKey];
                     const cardHtml = `
                         <div style="background: #0d1117; padding: 10px; border: 1px solid #30363d; margin-bottom: 10px; border-radius: 5px;">
@@ -300,7 +310,7 @@
         });
 
         // ==========================================
-        // MODULE 4: ROGUEHUNTER (NEW!)
+        // MODULE 4: ROGUEHUNTER (UPDATED FOR ZERO-TRUST SCRIPT)
         // ==========================================
         db.ref('rogue_alerts').on('value', (snapshot) => {
             const data = snapshot.val();
@@ -310,25 +320,43 @@
             alertsContainer.innerHTML = '';
 
             if (data) {
-                // Attack detected! Make banner RED and BLINK
-                statusBanner.style.background = '#da3633';
-                statusBanner.innerHTML = '🚨 DANGER: ACTIVE WIRELESS ATTACKS DETECTED! 🚨';
-                statusBanner.classList.add('alert-blink');
+                let hasAlerts = false;
 
                 Object.keys(data).forEach(alertKey => {
+                    // MUKHYA FIX: Agar device offline placeholder hai, toh usko ignore karo
+                    if (alertKey === "system_offline") return;
+
+                    hasAlerts = true;
                     const alert = data[alertKey];
+
+                    // HTML card ab naye variables ko direct padhega
                     alertsContainer.innerHTML += `
                         <div style="border-left: 4px solid #da3633; background: #161b22; padding: 15px; margin-bottom: 10px; border-radius: 4px;">
-                            <strong style="color: #da3633; font-size: 18px;">[ ${alert.type} ]</strong><br>
-                            <span style="color: #8b949e;">Target MAC:</span> ${alert.target_mac || 'Broadcast'}<br>
-                            <span style="color: #8b949e;">Details:</span> ${alert.details}
+                            <strong style="color: #da3633; font-size: 18px;">[ 🚨 UNAUTHORIZED ROGUE DEVICE ]</strong><br>
+                            <span style="color: #8b949e;">IP Address:</span> <span style="color: #58a6ff; font-weight: bold;">${alert.ip_address}</span><br>
+                            <span style="color: #8b949e;">MAC Address:</span> ${alert.mac_address}<br>
+                            <span style="color: #8b949e;">First Seen:</span> ${alert.first_seen}<br>
+                            <span style="color: #8b949e;">Threat Level:</span> <span style="color: #da3633; font-weight: bold;">${alert.threat_level}</span><br>
+                            <span style="color: #8b949e;">Status:</span> ${alert.status}
                         </div>
                     `;
                 });
+
+                if (hasAlerts) {
+                    // Attack detected! Make banner RED and BLINK
+                    statusBanner.style.background = '#da3633';
+                    statusBanner.innerHTML = '🚨 DANGER: UNAUTHORIZED DEVICES DETECTED! 🚨';
+                    statusBanner.classList.add('alert-blink');
+                } else {
+                    // Agar sirf system_offline data hai (no real alerts)
+                    statusBanner.style.background = '#238636';
+                    statusBanner.innerHTML = '✅ SECURE: No Rogue Devices detected (Sensor Offline).';
+                    statusBanner.classList.remove('alert-blink');
+                }
             } else {
                 // System Safe! Make banner GREEN
                 statusBanner.style.background = '#238636';
-                statusBanner.innerHTML = '✅ SECURE: No Evil Twin or De-Auth attacks detected.';
+                statusBanner.innerHTML = '✅ SECURE: No Rogue Devices detected.';
                 statusBanner.classList.remove('alert-blink');
             }
         });
