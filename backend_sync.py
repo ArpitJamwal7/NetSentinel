@@ -7,7 +7,7 @@ import time
 # (End mein '.json' lagana zaroori hai)
 # Example: "https://netsentinel-xyz-default-rtdb.firebaseio.com/autorecon_devices.json"
 # ==========================================
-FIREBASE_URL = "https://YOUR_PROJECT_ID-default-rtdb.firebaseio.com/autorecon_devices.json"
+FIREBASE_URL = "https://netsentinel-5ef8d-default-rtdb.firebaseio.com/autorecon_devices.json"
 
 def send_data_to_firebase(device_id, ip, mac, os_name, ports):
     """Network scan ke data ko live Firebase par bhejta hai"""
@@ -24,7 +24,7 @@ def send_data_to_firebase(device_id, ip, mac, os_name, ports):
     
     try:
         # PATCH request se naya data add hota hai (purana delete nahi hota)
-        response = requests.patch(https://netsentinel-5ef8d-default-rtdb.firebaseio.com/autorecon_devices.json, json=payload)
+        response = requests.patch("https://netsentinel-5ef8d-default-rtdb.firebaseio.com/autorecon_devices.json", json=payload)
         
         if response.status_code == 200:
             print(f"[SUCCESS] Data sent for {ip} -> Dashboard updated live!")

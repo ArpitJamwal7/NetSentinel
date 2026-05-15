@@ -4,203 +4,792 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NetSentinel | Command Center</title>
+    <title>NetSentinel v4.0 PRO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            background-color: #0d1117;
-            color: #c9d1d9;
-            font-family: 'Consolas', 'Courier New', monospace;
-            margin: 0;
-            padding: 0;
+        :root {
+            --green: #1eff9d;
+            --blue: #3a86ff;
+            --red: #ff3b57;
+            --orange: #ffb84d;
+            --bg: #060b12;
+            --card-bg: rgba(10, 20, 30, 0.7);
+            --border: #142833;
+            --text-dim: #8da4b3;
+            --text-mid: #a9b8c2;
         }
 
-        /* Top Navigation Bar */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            color: #e0e0e0;
+            font-family: 'Share Tech Mono', monospace;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Grid overlay */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+            background-size: 32px 32px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Ambient glow */
+        body::after {
+            content: "";
+            position: fixed;
+            top: -30%;
+            left: -20%;
+            width: 70%;
+            height: 70%;
+            background: radial-gradient(ellipse, rgba(30, 255, 157, 0.04) 0%, transparent 65%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
         header {
-            background-color: #161b22;
-            border-bottom: 2px solid #2ea043;
-            padding: 15px 20px;
+            position: relative;
+            z-index: 10;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 14px 28px 6px;
         }
 
-        h1 {
-            color: #2ea043;
-            margin: 0;
-            font-size: 24px;
-            text-shadow: 0 0 5px #2ea043;
-        }
-
-        .status-live {
-            color: #3fb950;
+        .logo {
+            color: var(--green);
+            font-size: 22px;
             font-weight: bold;
-            animation: blink 1.5s infinite;
+            letter-spacing: 2px;
+            text-shadow: 0 0 14px rgba(30, 255, 157, 0.55);
         }
 
-        .alert-blink {
-            animation: dangerBlink 1s infinite;
+        .system-status {
+            color: var(--green);
+            font-size: 13px;
+            text-shadow: 0 0 8px rgba(30, 255, 157, 0.7);
+            animation: pulse-text 2s ease-in-out infinite;
         }
 
-        @keyframes blink {
+        @keyframes pulse-text {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
             50% {
-                opacity: 0;
+                opacity: 0.7;
             }
         }
 
-        @keyframes dangerBlink {
-            50% {
-                opacity: 0.5;
-                background-color: #8b0000;
-            }
-        }
-
-        /* Tabs Menu */
-        .navbar {
+        /* ── TOP BAR ── */
+        .topbar {
+            position: relative;
+            z-index: 10;
             display: flex;
-            background-color: #0d1117;
-            border-bottom: 1px solid #30363d;
-            padding: 10px 20px 0 20px;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding: 0 28px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 20px;
         }
 
-        .tab-button {
-            background-color: transparent;
-            color: #8b949e;
-            border: none;
-            padding: 10px 20px;
+        .tabs-container {
+            display: flex;
+            gap: 22px;
+        }
+
+        .tab {
+            color: var(--text-dim);
+            font-size: 14px;
             cursor: pointer;
-            font-size: 16px;
-            font-weight: bold;
-            border-bottom: 3px solid transparent;
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            border-bottom: 2px solid transparent;
+            transition: color 0.25s, border-color 0.25s;
+            user-select: none;
         }
 
-        .tab-button:hover {
-            color: #c9d1d9;
+        .tab:hover {
+            color: var(--text-mid);
         }
 
-        .tab-button.active {
-            color: #58a6ff;
-            border-bottom: 3px solid #58a6ff;
+        .tab.active {
+            color: var(--blue);
+            border-bottom-color: var(--blue);
+            text-shadow: 0 0 8px rgba(58, 134, 255, 0.5);
         }
 
-        /* Content Area */
+        .top-stats {
+            display: flex;
+            gap: 18px;
+            padding-bottom: 10px;
+        }
+
+        .mini-stat {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            min-width: 110px;
+        }
+
+        .mini-stat-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            color: var(--text-dim);
+        }
+
+        .val-green {
+            color: var(--green);
+        }
+
+        .val-red {
+            color: var(--red);
+        }
+
+        .val-dim {
+            color: var(--text-mid);
+        }
+
+        .sparkline {
+            height: 18px;
+            width: 100%;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        /* ── LAYOUT ── */
         .tab-content {
             display: none;
-            padding: 20px;
         }
 
         .tab-content.active {
+            display: contents;
+        }
+
+        #AutoRecon.active {
+            display: grid;
+            grid-template-columns: 1.75fr 1.15fr 0.9fr;
+            gap: 24px;
+            padding: 0 28px 28px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .other-tab-content {
+            display: none;
+            padding: 0 28px 28px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .other-tab-content.active {
             display: block;
         }
 
-        /* Grid for AutoRecon */
-        .dashboard-grid {
+        /* ── SECTION HEADING ── */
+        .section-heading {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        .heading-main {
+            color: var(--blue);
+            font-size: 20px;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(58, 134, 255, 0.4);
+        }
+
+        .heading-sub {
+            color: var(--green);
+            font-size: 13px;
+        }
+
+        /* ── DEVICE CARDS ── */
+        .devices-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            align-content: start;
         }
 
         .device-card {
-            background-color: #161b22;
-            border: 1px solid #30363d;
-            border-left: 4px solid #58a6ff;
-            border-radius: 5px;
-            padding: 15px;
+            background: var(--card-bg);
+            border: 1px solid #145c38;
+            border-radius: 8px;
+            padding: 13px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            position: relative;
+            box-shadow: inset 0 0 18px rgba(0, 0, 0, 0.5);
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+
+        .device-card:hover {
+            transform: translateY(-1px);
+            box-shadow: inset 0 0 18px rgba(0, 0, 0, 0.5), 0 4px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .device-card.selected {
+            border-color: var(--blue);
+            background: rgba(58, 134, 255, 0.05);
+            box-shadow: inset 0 0 20px rgba(58, 134, 255, 0.1), 0 0 14px rgba(58, 134, 255, 0.2);
+        }
+
+        .device-card.compromised {
+            border-color: var(--red);
+            background: rgba(255, 59, 87, 0.05);
+            box-shadow: inset 0 0 20px rgba(255, 59, 87, 0.1), 0 0 14px rgba(255, 59, 87, 0.2);
+            animation: card-pulse 2.5s ease-in-out infinite;
+        }
+
+        @keyframes card-pulse {
+
+            0%,
+            100% {
+                box-shadow: inset 0 0 20px rgba(255, 59, 87, 0.1), 0 0 14px rgba(255, 59, 87, 0.2);
+            }
+
+            50% {
+                box-shadow: inset 0 0 20px rgba(255, 59, 87, 0.2), 0 0 22px rgba(255, 59, 87, 0.35);
+            }
+        }
+
+        .gear-icon {
+            position: absolute;
+            top: 13px;
+            right: 13px;
+            color: var(--green);
+            font-size: 13px;
+            opacity: 0.6;
+        }
+
+        .card-top {
+            display: flex;
+            align-items: center;
+        }
+
+        .card-icon-wrapper {
+            font-size: 36px;
+            color: #4b6b7a;
+            margin-right: 12px;
+            width: 42px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .card-details {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .device-name {
+            font-size: 14px;
+            color: #fff;
+            font-weight: bold;
+            margin-bottom: 3px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .device-ip,
+        .device-mac {
+            font-size: 11px;
+            color: var(--text-dim);
+            line-height: 1.5;
+        }
+
+        .data-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            margin-top: 1px;
+        }
+
+        .os-logo {
+            margin-right: 5px;
+            font-size: 13px;
+        }
+
+        .text-green {
+            color: var(--green);
+        }
+
+        .text-red {
+            color: var(--red);
+        }
+
+        .text-orange {
+            color: var(--orange);
+        }
+
+        .ports-row {
+            margin-top: 4px;
+            font-size: 12px;
+            color: var(--text-dim);
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px;
         }
 
         .port-tag {
-            background-color: #238636;
-            color: white;
-            padding: 3px 8px;
+            background: rgba(30, 255, 157, 0.1);
+            border: 1px solid var(--green);
+            color: var(--green);
+            padding: 1px 7px;
             border-radius: 4px;
-            font-size: 12px;
-            margin: 2px;
-            display: inline-block;
+            font-size: 11px;
         }
 
-        .risk-high {
-            background-color: #da3633;
-            box-shadow: 0 0 8px #da3633;
+        .port-tag.risk-port {
+            border-color: var(--red);
+            color: var(--red);
+            background: rgba(255, 59, 87, 0.1);
         }
 
-        /* Terminal Box */
-        .terminal-box {
-            background-color: #000;
-            border: 1px solid #30363d;
-            padding: 15px;
-            height: 300px;
-            overflow-y: auto;
-            color: #3fb950;
+        /* Dynamic Vuln Box styling for inside card */
+        .vuln-box {
+            margin-top: 5px;
+            padding-top: 5px;
+            border-top: 1px dashed rgba(255, 59, 87, 0.3);
+            font-size: 11px;
+        }
+
+        .vuln-list {
+            color: var(--text-mid);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* ── RADAR ── */
+        .column-mid {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 42px;
+        }
+
+        .radar-wrapper {
+            position: relative;
+            width: 360px;
+            height: 360px;
+        }
+
+        .radar {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid rgba(30, 255, 157, 0.55);
+            background:
+                repeating-radial-gradient(circle, transparent 0, transparent 38px, rgba(30, 255, 157, 0.12) 38px, rgba(30, 255, 157, 0.12) 40px),
+                linear-gradient(90deg, transparent 49.6%, rgba(30, 255, 157, 0.25) 49.6%, rgba(30, 255, 157, 0.25) 50.4%, transparent 50.4%),
+                linear-gradient(0deg, transparent 49.6%, rgba(30, 255, 157, 0.25) 49.6%, rgba(30, 255, 157, 0.25) 50.4%, transparent 50.4%);
+            position: relative;
+            box-shadow: 0 0 40px rgba(30, 255, 157, 0.08), inset 0 0 60px rgba(0, 0, 0, 0.6);
+        }
+
+        .radar::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background:
+                linear-gradient(45deg, transparent 49.8%, rgba(30, 255, 157, 0.18) 49.8%, rgba(30, 255, 157, 0.18) 50.2%, transparent 50.2%),
+                linear-gradient(-45deg, transparent 49.8%, rgba(30, 255, 157, 0.18) 49.8%, rgba(30, 255, 157, 0.18) 50.2%, transparent 50.2%);
+        }
+
+        .radar-sweep {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, transparent 65%, rgba(30, 255, 157, 0.35) 100%);
+            animation: sweep 4s linear infinite;
+            z-index: 5;
+        }
+
+        @keyframes sweep {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .radar-dot {
+            position: absolute;
+            border-radius: 50%;
+            box-shadow: 0 0 6px currentColor;
+            z-index: 10;
+        }
+
+        .radar-dot.normal {
+            width: 6px;
+            height: 6px;
+            background: var(--green);
+            color: var(--green);
+        }
+
+        .radar-dot.threat {
+            width: 8px;
+            height: 8px;
+            background: var(--red);
+            color: var(--red);
+            animation: blink 1s infinite;
+        }
+
+        .deg {
+            position: absolute;
+            color: var(--green);
+            font-size: 11px;
+            opacity: 0.75;
+        }
+
+        .deg-0 {
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .deg-45 {
+            top: 8%;
+            right: -6%;
+        }
+
+        .deg-90 {
+            top: 50%;
+            right: -28px;
+            transform: translateY(-50%);
+        }
+
+        .deg-135 {
+            bottom: 8%;
+            right: -6%;
+        }
+
+        .deg-180 {
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .deg-225 {
+            bottom: 8%;
+            left: -6%;
+        }
+
+        .deg-270 {
+            top: 50%;
+            left: -28px;
+            transform: translateY(-50%);
+        }
+
+        .deg-315 {
+            top: 8%;
+            left: -6%;
+        }
+
+        /* ── LOGS ── */
+        .logs-title {
+            color: var(--text-mid);
+            font-size: 15px;
+            margin-bottom: 12px;
+            border-bottom: 1px dashed #1b3449;
+            padding-bottom: 8px;
+            margin-top: 8px;
+        }
+
+        .logs-container {
+            height: 620px;
+            overflow-y: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .log-entry {
+            font-size: 11px;
+            display: flex;
+            gap: 10px;
+            line-height: 1.5;
+        }
+
+        .log-time {
+            color: var(--text-mid);
+            min-width: 95px;
+            opacity: 0.85;
+            flex-shrink: 0;
+        }
+
+        .log-msg {
+            color: var(--text-mid);
+            word-break: break-all;
+        }
+
+        .log-msg.text-green {
+            color: var(--green);
+        }
+
+        .log-msg.text-red {
+            color: var(--red);
+        }
+
+        .log-msg.text-orange {
+            color: var(--orange);
+        }
+
+        /* ── ZERO TRUST shared ── */
+        .byod-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 18px;
+        }
+
+        /* ── SCROLLBAR ── */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #1b3449;
+            border-radius: 4px;
         }
     </style>
 </head>
 
 <body>
-
     <header>
-        <h1>[ NetSentinel_v2.0 ]</h1>
-        <span class="status-live">● SYSTEM ONLINE</span>
+        <div class="logo">[ NetSentinel_v4.0_PRO ]</div>
+        <div class="system-status">● SYSTEM ONLINE</div>
     </header>
 
-    <div class="navbar">
-        <button class="tab-button active" onclick="openTab('AutoRecon', this)">📡 AutoRecon</button>
-        <button class="tab-button" onclick="openTab('ZeroTrust', this)">🛡️ Zero-Trust BYOD</button>
-        <button class="tab-button" onclick="openTab('PacketPeek', this)">👁️‍🗨️ PacketPeek</button>
-        <button class="tab-button" onclick="openTab('RogueHunter', this)">🚨 RogueHunter</button>
-    </div>
+    <div class="topbar">
+        <div class="tabs-container">
+            <div class="tab active" onclick="openTab('AutoRecon',this)"><i class="fas fa-satellite-dish"></i> AutoRecon
+            </div>
+            <div class="tab" onclick="openTab('ZeroTrust',this)"><i class="fas fa-shield-alt"></i> Zero-Trust BYOD</div>
+            <div class="tab" onclick="openTab('PacketPeek',this)"><i class="fas fa-eye"></i> PacketPeek</div>
+            <div class="tab" onclick="openTab('RogueHunter',this)"><i class="fas fa-crosshairs"></i> RogueHunter</div>
+        </div>
 
-    <div id="AutoRecon" class="tab-content active">
-        <h2 style="color: #58a6ff;">> Live Network Devices <span id="device-count"
-                style="color: #3fb950; font-size: 18px; margin-left: 15px;">(0 Devices Online)</span></h2>
-        <div class="dashboard-grid" id="device-container"></div>
-    </div>
-
-    <div id="ZeroTrust" class="tab-content">
-        <h2 style="color: #d2a8ff;">> Network Admission Control (Zero-Trust)</h2>
-        <div style="display: flex; gap: 20px; margin-top: 20px;">
-            <div style="flex: 1; border: 1px solid #da3633; padding: 15px; border-radius: 5px; background: #161b22;">
-                <h3 style="color: #da3633; margin-top: 0;">⚠️ Pending Approval</h3>
-                <div id="pending-devices">
-                    <p style="color: #8b949e;">Waiting for devices...</p>
+        <div class="top-stats">
+            <div class="mini-stat" style="min-width:145px;">
+                <div class="mini-stat-row"><span>Active Scans</span><span class="val-green" id="top-active">0</span>
+                </div>
+                <div class="mini-stat-row"><span class="val-dim">Comp</span><span class="val-dim">Low Ri</span><span
+                        class="val-dim">31.39B</span><span class="val-dim">30.33B</span></div>
+            </div>
+            <div class="mini-stat" style="min-width:145px;">
+                <div class="mini-stat-row"><span>Threats</span><span class="val-red" id="top-threats">0</span></div>
+                <div class="mini-stat-row"><span class="val-red">Red Ril</span><span class="val-red">20.3%</span><span
+                        class="val-dim">159.5B</span></div>
+            </div>
+            <div class="mini-stat" style="min-width:145px;">
+                <div class="mini-stat-row"><span>Bandwidth</span><span class="val-green">Stable</span><span
+                        class="val-dim">90</span><span class="val-dim">18.6k</span></div>
+                <div class="mini-stat-row"><span class="val-red">Network</span><span class="val-dim">0.50</span><span
+                        class="val-dim">OK</span></div>
+            </div>
+            <div class="mini-stat">
+                <div class="mini-stat-row"><span>CPU Usage</span><span class="val-green" id="cpu-val">12%</span></div>
+                <div class="sparkline">
+                    <svg viewBox="0 0 110 18" xmlns="http://www.w3.org/2000/svg" width="110" height="18">
+                        <polyline id="cpu-spark" points="0,18 11,12 22,16 33,4 44,9 55,2 66,11 77,7 88,15 99,4 110,18"
+                            fill="rgba(30,255,157,0.18)" stroke="#1eff9d" stroke-width="1.2" />
+                    </svg>
                 </div>
             </div>
-            <div style="flex: 1; border: 1px solid #3fb950; padding: 15px; border-radius: 5px; background: #161b22;">
-                <h3 style="color: #3fb950; margin-top: 0;">✅ Trusted Devices</h3>
-                <div id="trusted-devices">
-                    <p style="color: #8b949e;">No trusted devices yet.</p>
+            <div class="mini-stat">
+                <div class="mini-stat-row"><span>RAM</span><span class="val-green" id="ram-val">4.2G</span></div>
+                <div class="sparkline">
+                    <svg viewBox="0 0 110 18" xmlns="http://www.w3.org/2000/svg" width="110" height="18">
+                        <polyline id="ram-spark" points="0,18 11,7 22,11 33,2 44,16 55,4 66,9 77,2 88,14 99,7 110,18"
+                            fill="rgba(58,134,255,0.18)" stroke="#3a86ff" stroke-width="1.2" />
+                    </svg>
+                </div>
+            </div>
+            <div class="mini-stat">
+                <div class="mini-stat-row"><span>Network I/O</span><span class="val-green" id="nio-val">12 MB/s</span>
+                </div>
+                <div class="sparkline">
+                    <svg viewBox="0 0 110 18" xmlns="http://www.w3.org/2000/svg" width="110" height="18">
+                        <polyline id="nio-spark" points="0,18 11,10 22,14 33,5 44,12 55,3 66,13 77,6 88,16 99,5 110,18"
+                            fill="rgba(30,255,157,0.18)" stroke="#1eff9d" stroke-width="1.2" />
+                    </svg>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="PacketPeek" class="tab-content">
-        <h2 style="color: #3fb950;">> Live Traffic Analysis</h2>
-        <div class="terminal-box" id="packet-terminal"></div>
-    </div>
+    <div class="tab-content active" id="AutoRecon">
 
-    <div id="RogueHunter" class="tab-content">
-        <h2 style="color: #da3633;">> Wireless Intrusion Detection</h2>
+        <div class="column-left">
+            <div class="section-heading">
+                <div class="heading-main">> Live Network Devices</div>
+                <div class="heading-sub">(<span id="stat-active-count">0</span> Devices Online)</div>
+            </div>
 
-        <div id="rogue-status"
-            style="background: #238636; padding: 15px; border-radius: 5px; text-align: center; font-size: 20px; font-weight: bold; color: white; margin-bottom: 20px; transition: 0.3s;">
-            ✅ SECURE: No Rogue Devices detected.
+            <div class="devices-grid" id="device-container">
+                <div style="color:var(--text-dim); font-size:14px; grid-column: span 2;">
+                    [!] Waiting for Kali Linux Sensor stream...
+                </div>
+            </div>
         </div>
 
-        <div id="rogue-alerts-container"></div>
+        <div class="column-mid">
+            <div class="radar-wrapper">
+                <div class="radar" id="radar-container">
+                    <div class="radar-sweep"></div>
+                    <i class="fas fa-desktop"
+                        style="position:absolute;top:22%;left:32%;color:var(--green);font-size:13px;opacity:0.65;z-index:8;"></i>
+                    <i class="fas fa-server"
+                        style="position:absolute;top:62%;left:72%;color:var(--green);font-size:13px;opacity:0.65;z-index:8;"></i>
+                    <i class="fas fa-mobile-alt"
+                        style="position:absolute;top:43%;left:78%;color:var(--green);font-size:13px;opacity:0.65;z-index:8;"></i>
+                    <i class="fas fa-laptop"
+                        style="position:absolute;top:72%;left:22%;color:var(--orange);font-size:13px;opacity:0.65;z-index:8;"></i>
+                    <i class="fas fa-broadcast-tower"
+                        style="position:absolute;top:30%;left:60%;color:var(--green);font-size:11px;opacity:0.6;z-index:8;"></i>
+                    <i class="fas fa-hdd"
+                        style="position:absolute;top:55%;left:40%;color:var(--green);font-size:11px;opacity:0.6;z-index:8;"></i>
+                </div>
+                <div class="deg deg-0">0</div>
+                <div class="deg deg-45">45</div>
+                <div class="deg deg-90">90</div>
+                <div class="deg deg-135">135</div>
+                <div class="deg deg-180">180</div>
+                <div class="deg deg-225">225</div>
+                <div class="deg deg-270">270</div>
+                <div class="deg deg-315">315</div>
+            </div>
+        </div>
+
+        <div class="column-right">
+            <div class="logs-title">Scanner Activity Logs</div>
+            <div class="logs-container" id="live-logs">
+                <div class="log-entry">
+                    <span class="log-time" id="init-time"></span>
+                    <span class="log-msg text-green"> System initialized. Waiting for backend connection.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="other-tab-content tab-content" id="ZeroTrust">
+        <div class="section-heading">
+            <div class="heading-main">> Zero-Trust BYOD Monitor</div>
+        </div>
+        <div style="color:var(--text-dim)">Policy engine listening...</div>
+    </div>
+
+    <div class="other-tab-content tab-content" id="PacketPeek">
+        <div class="section-heading">
+            <div class="heading-main">> PacketPeek — DPI</div>
+        </div>
+        <div style="color:var(--text-dim)">Sniffer active...</div>
+    </div>
+
+    <div class="other-tab-content tab-content" id="RogueHunter">
+        <div class="section-heading">
+            <div class="heading-main">> Rogue Device Hunter</div>
+        </div>
+        <div style="color:var(--text-dim)">Scanning for unauthorized access points...</div>
     </div>
 
     <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
 
     <script>
-        // Tab Switching Logic
-        function openTab(tabName, btnElement) {
-            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-            document.getElementById(tabName).classList.add('active');
-            btnElement.classList.add('active');
+        document.getElementById('init-time').innerText = new Date().toISOString().slice(11, 23);
+
+        /* ── Tab Logic ── */
+        function openTab(name, btn) {
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+            document.getElementById(name).classList.add('active');
+            btn.classList.add('active');
         }
 
-        // Firebase Config
+        /* ── Dynamic Radar Dots ── */
+        function addRadarDot(isThreat) {
+            const radar = document.getElementById('radar-container');
+            const dot = document.createElement('div');
+            dot.className = 'radar-dot ' + (isThreat ? 'threat' : 'normal');
+            const angle = Math.random() * 2 * Math.PI;
+            const r = Math.random() * 38 + 5;
+            dot.style.top = (50 + r * Math.sin(angle)) + '%';
+            dot.style.left = (50 + r * Math.cos(angle)) + '%';
+            radar.appendChild(dot);
+
+            // Limit dots so it doesn't get cluttered
+            const dots = radar.querySelectorAll('.radar-dot');
+            if (dots.length > 20) {
+                dots[0].remove();
+            }
+        }
+
+        /* ── Real-time Logs ── */
+        function addLog(msg, type) {
+            const logs = document.getElementById('live-logs');
+            const time = new Date().toISOString().slice(11, 23);
+            let cls = 'log-msg';
+            if (type === 'danger') cls += ' text-red';
+            else if (type === 'warning') cls += ' text-orange';
+            else cls += ' text-green';
+
+            const entry = document.createElement('div');
+            entry.className = 'log-entry';
+            entry.innerHTML = `<span class="log-time">${time} -</span><span class="${cls}"> ${msg}</span>`;
+            logs.appendChild(entry);
+
+            if (logs.children.length > 30) logs.removeChild(logs.firstChild);
+        }
+
+        /* ── Sparkline & Jitter ── */
+        function jitterSpark(id) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            const pts = [];
+            for (let i = 0; i < 11; i++) {
+                pts.push((i / 10) * 110 + ',' + (Math.random() * 14 + 2));
+            }
+            el.setAttribute('points', pts.join(' '));
+        }
+
+        function jitterStats() {
+            document.getElementById('cpu-val').textContent = Math.floor(Math.random() * 25 + 45) + '%';
+            document.getElementById('nio-val').textContent = Math.floor(Math.random() * 120 + 100) + ' MB/s';
+            jitterSpark('cpu-spark');
+            jitterSpark('ram-spark');
+            jitterSpark('nio-spark');
+        }
+        setInterval(jitterStats, 1800);
+
+        /* ── FIREBASE INTEGRATION ── */
         const firebaseConfig = {
             apiKey: "AIzaSyD5RAlJ4Hwjw69tyg0WmRv1Fnj8f_xLo0k",
             authDomain: "netsentinel-5ef8d.firebaseapp.com",
@@ -210,157 +799,123 @@
             messagingSenderId: "267568024627",
             appId: "1:267568024627:web:69d4b6de334f4f34f1e746"
         };
-
         firebase.initializeApp(firebaseConfig);
         const db = firebase.database();
 
-        // ==========================================
-        // MODULE 1: AUTORECON 
-        // ==========================================
         db.ref('autorecon_devices').on('value', (snapshot) => {
             const data = snapshot.val();
             const container = document.getElementById('device-container');
-            const countSpan = document.getElementById('device-count');
+
             container.innerHTML = '';
+
+            // Clean up existing radar dots on refresh
+            document.querySelectorAll('.radar-dot').forEach(e => e.remove());
 
             if (data) {
                 const keys = Object.keys(data).filter(key => key !== "system_offline");
-                const deviceCount = keys.length;
 
-                // Update Counter
-                countSpan.innerText = `(${deviceCount} Devices Online)`;
-                countSpan.style.color = deviceCount > 0 ? "#3fb950" : "#8b949e";
+                let highRiskCount = 0;
+
+                // Update Top UI Counters
+                document.getElementById('stat-active-count').innerText = keys.length;
+                document.getElementById('top-active').innerText = keys.length;
+
+                // Sort High Risk Devices to Top
+                keys.sort((a, b) => {
+                    let rA = data[a].risk_level === "High Risk" ? 1 : 0;
+                    let rB = data[b].risk_level === "High Risk" ? 1 : 0;
+                    return rB - rA;
+                });
 
                 keys.forEach(key => {
                     const device = data[key];
-                    let portsHtml = '';
-                    if (device.open_ports) {
+                    let isCompromised = (device.risk_level === "High Risk" || device.risk_level === "Med Risk");
+
+                    if (isCompromised) highRiskCount++;
+
+                    // Add dynamic radar dot for this device
+                    addRadarDot(isCompromised);
+
+                    // Dynamic CSS mappings
+                    let cardClasses = isCompromised ? "device-card compromised" : "device-card selected";
+                    let statusColor = isCompromised ? "text-red" : "text-green";
+                    let riskColor = isCompromised ? (device.risk_level === "High Risk" ? "text-red" : "text-orange") : "text-green";
+                    let statusText = isCompromised ? "Compromised" : "✔ Compliant";
+
+                    // Determine Icon based on OS
+                    let osLower = (device.os_version || "").toLowerCase();
+                    let osIcon = "fa-desktop";
+                    let osLogo = "fa-linux";
+                    if (osLower.includes("win")) { osIcon = "fa-desktop"; osLogo = "fa-windows"; }
+                    else if (osLower.includes("mac") || osLower.includes("apple")) { osIcon = "fa-laptop"; osLogo = "fa-apple"; }
+                    else if (osLower.includes("linux")) { osIcon = "fa-server"; osLogo = "fa-linux"; }
+                    else if (osLower.includes("android")) { osIcon = "fa-mobile-alt"; osLogo = "fa-android"; }
+
+                    // Ports Assembly
+                    let portsHtml = `<span>Ports</span>`;
+                    if (device.open_ports && device.open_ports.length > 0) {
                         device.open_ports.forEach(p => {
-                            let isRisk = (p.port === 22 || p.port === 21) ? 'risk-high' : '';
-                            portsHtml += `<span class="port-tag ${isRisk}">Port ${p.port}</span>`;
+                            let isRiskPort = [21, 22, 23, 445, 3389].includes(parseInt(p.port));
+                            portsHtml += `<span class="port-tag ${isRiskPort ? 'risk-port' : ''}">${p.port}</span>`;
                         });
+                    } else {
+                        portsHtml += `<span class="text-dim" style="font-size:11px; margin-left:5px;">None</span>`;
                     }
-                    container.innerHTML += `
-                <div class="device-card">
-                    <h3 style="margin-top:0;">IP: ${device.ip_address}</h3>
-                    <p><strong>OS:</strong> ${device.os_version || 'Unknown'}</p>
-                    <p><strong>MAC:</strong> ${device.mac_address || 'Unknown'}</p>
-                    <div><strong>Open Ports:</strong><br>${portsHtml || 'Scanning...'}</div>
-                </div>`;
-                });
-            } else {
-                countSpan.innerText = `(0 Devices Online)`;
-                container.innerHTML = '<p style="color: #8b949e;">Waiting for NetSentinel Sensor...</p>';
-            }
-        });
 
-        // ==========================================
-        // MODULE 2: ZERO-TRUST BYOD (Leaving intact for future use)
-        // ==========================================
-        db.ref('byod_devices').on('value', (snapshot) => {
-            const data = snapshot.val();
-            const pendingContainer = document.getElementById('pending-devices');
-            const trustedContainer = document.getElementById('trusted-devices');
-            pendingContainer.innerHTML = '';
-            trustedContainer.innerHTML = '';
+                    // Vulnerability Box Logic (Fits your UI style seamlessly)
+                    let vulnsHtml = '';
+                    if (device.vulnerabilities && device.vulnerabilities.length > 0) {
+                        let cveList = device.vulnerabilities[0].id || device.vulnerabilities[0];
+                        vulnsHtml = `
+                        <div class="vuln-box">
+                            <div class="text-red" style="font-weight:bold; margin-bottom:2px;">[!] ${device.vulnerabilities.length} CVEs Detected</div>
+                            <div class="vuln-list">>> ${cveList}</div>
+                        </div>`;
 
-            if (data) {
-                Object.keys(data).forEach(macKey => {
-                    if (macKey === "system_offline") return;
-                    const device = data[macKey];
-                    const cardHtml = `
-                        <div style="background: #0d1117; padding: 10px; border: 1px solid #30363d; margin-bottom: 10px; border-radius: 5px;">
-                            <strong>IP:</strong> <span style="color: #58a6ff;">${device.ip_address}</span><br>
-                            <strong>MAC:</strong> ${device.mac_address}<br>
-                            <strong>Host:</strong> ${device.hostname || 'Unknown'}<br>
-                            ${device.status === 'pending' ?
-                            `<button onclick="updateBYOD('${macKey}', 'trusted')" style="background: #238636; color: white; border: none; padding: 5px 15px; margin-top: 8px; cursor: pointer; font-weight: bold; border-radius: 3px;">ALLOW</button>
-                               <button onclick="updateBYOD('${macKey}', 'blocked')" style="background: #da3633; color: white; border: none; padding: 5px 15px; margin-top: 8px; cursor: pointer; font-weight: bold; border-radius: 3px;">BLOCK</button>`
-                            : ''}
+                        // Push log
+                        addLog(`Threat identified on ${device.ip_address} - CVE detected!`, 'danger');
+                    } else {
+                        addLog(`Scanned ${device.ip_address} - Safe`, 'normal');
+                    }
+
+                    // HTML Template Building (Matching your exact classes)
+                    let cardHtml = `
+                    <div class="${cardClasses}">
+                        <i class="fas fa-cog gear-icon"></i>
+                        <div class="card-top">
+                            <div class="card-icon-wrapper"><i class="fas ${osIcon}"></i></div>
+                            <div class="card-details">
+                                <div class="device-name">${device.ip_address}</div>
+                                <div class="device-ip">${device.vendor || 'Unknown Vendor'}</div>
+                                <div class="device-mac">MAC: ${device.mac_address || 'Unknown'}</div>
+                            </div>
                         </div>
-                    `;
-                    if (device.status === 'pending') pendingContainer.innerHTML += cardHtml;
-                    else if (device.status === 'trusted') trustedContainer.innerHTML += cardHtml;
-                });
-            }
-            if (pendingContainer.innerHTML === '') pendingContainer.innerHTML = '<p style="color: #8b949e;">No pending requests.</p>';
-            if (trustedContainer.innerHTML === '') trustedContainer.innerHTML = '<p style="color: #8b949e;">No trusted devices.</p>';
-        });
-
-        window.updateBYOD = function (macKey, newStatus) {
-            db.ref('byod_devices/' + macKey).update({ status: newStatus });
-        };
-
-        // ==========================================
-        // MODULE 3: PACKETPEEK 
-        // ==========================================
-        db.ref('packet_logs').on('child_added', (snapshot) => {
-            const log = snapshot.val();
-            const terminal = document.getElementById('packet-terminal');
-            if (log && log.text) {
-                let textColor = "#3fb950";
-                const textLower = log.text.toLowerCase();
-                if (textLower.includes("[alert]") || textLower.includes("password") || textLower.includes("admin")) {
-                    textColor = "#da3633";
-                }
-                const timeStamp = new Date().toLocaleTimeString();
-                terminal.innerHTML += `<p style="color: ${textColor}; margin: 2px 0; font-family: monospace;">[${timeStamp}] ${log.text}</p>`;
-                terminal.scrollTop = terminal.scrollHeight;
-            }
-        });
-
-        // ==========================================
-        // MODULE 4: ROGUEHUNTER (UPDATED FOR ZERO-TRUST SCRIPT)
-        // ==========================================
-        db.ref('rogue_alerts').on('value', (snapshot) => {
-            const data = snapshot.val();
-            const statusBanner = document.getElementById('rogue-status');
-            const alertsContainer = document.getElementById('rogue-alerts-container');
-
-            alertsContainer.innerHTML = '';
-
-            if (data) {
-                let hasAlerts = false;
-
-                Object.keys(data).forEach(alertKey => {
-                    // MUKHYA FIX: Agar device offline placeholder hai, toh usko ignore karo
-                    if (alertKey === "system_offline") return;
-
-                    hasAlerts = true;
-                    const alert = data[alertKey];
-
-                    // HTML card ab naye variables ko direct padhega
-                    alertsContainer.innerHTML += `
-                        <div style="border-left: 4px solid #da3633; background: #161b22; padding: 15px; margin-bottom: 10px; border-radius: 4px;">
-                            <strong style="color: #da3633; font-size: 18px;">[ 🚨 UNAUTHORIZED ROGUE DEVICE ]</strong><br>
-                            <span style="color: #8b949e;">IP Address:</span> <span style="color: #58a6ff; font-weight: bold;">${alert.ip_address}</span><br>
-                            <span style="color: #8b949e;">MAC Address:</span> ${alert.mac_address}<br>
-                            <span style="color: #8b949e;">First Seen:</span> ${alert.first_seen}<br>
-                            <span style="color: #8b949e;">Threat Level:</span> <span style="color: #da3633; font-weight: bold;">${alert.threat_level}</span><br>
-                            <span style="color: #8b949e;">Status:</span> ${alert.status}
+                        <div class="data-row">
+                            <div><i class="fab ${osLogo} os-logo" style="color:var(--blue)"></i> ${device.os_version || 'Unknown OS'}</div>
+                            <div class="${statusColor}">${statusText}</div>
                         </div>
-                    `;
+                        <div class="data-row">
+                            <div class="${statusColor}">${isCompromised ? '● Alert' : '✔ Active'}</div>
+                            <div class="${riskColor}">${device.risk_level}</div>
+                        </div>
+                        <div class="ports-row">
+                            ${portsHtml}
+                        </div>
+                        ${vulnsHtml}
+                    </div>`;
+
+                    container.innerHTML += cardHtml;
                 });
 
-                if (hasAlerts) {
-                    // Attack detected! Make banner RED and BLINK
-                    statusBanner.style.background = '#da3633';
-                    statusBanner.innerHTML = '🚨 DANGER: UNAUTHORIZED DEVICES DETECTED! 🚨';
-                    statusBanner.classList.add('alert-blink');
-                } else {
-                    // Agar sirf system_offline data hai (no real alerts)
-                    statusBanner.style.background = '#238636';
-                    statusBanner.innerHTML = '✅ SECURE: No Rogue Devices detected (Sensor Offline).';
-                    statusBanner.classList.remove('alert-blink');
-                }
+                document.getElementById('top-threats').innerText = highRiskCount;
             } else {
-                // System Safe! Make banner GREEN
-                statusBanner.style.background = '#238636';
-                statusBanner.innerHTML = '✅ SECURE: No Rogue Devices detected.';
-                statusBanner.classList.remove('alert-blink');
+                document.getElementById('stat-active-count').innerText = "0";
+                document.getElementById('top-active').innerText = "0";
+                document.getElementById('top-threats').innerText = "0";
+                container.innerHTML = '<div style="color:var(--text-dim); font-size:14px; grid-column: span 2;">[!] Session cleared. Waiting for NetSentinel Scanner...</div>';
+                addLog('Firebase session wiped. Standing by.', 'warning');
             }
         });
-
     </script>
 </body>
 
